@@ -1,0 +1,63 @@
+﻿@model RepositoryPatternTutorial.ViewModels.TicketWithStatsViewModel
+
+@{ ViewData["Title"] = "Index"; }
+
+<ul>
+    <li class="d-inline-block">
+        <strong>@Html.DisplayNameFor(x => x.Stats.AverageFoodItemProfit)</strong>
+        @Html.DisplayFor(x => x.Stats.AverageFoodItemProfit)
+    </li>
+    <li class="d-inline-block">
+        <strong>@Html.DisplayNameFor(x => x.Stats.AverageTicketProfit)</strong>
+        @Html.DisplayFor(x => x.Stats.AverageTicketProfit)
+    </li>
+</ul>
+
+
+
+<h1>Tickets Sold</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("MovieName")
+            </th>
+            <th>
+                @Html.DisplayName("SalePrice")
+            </th>
+            <th>
+                @Html.DisplayName("StudioCutPercentage")
+            </th>
+            <th>
+                @Html.DisplayName("Quantity")
+            </th>
+            <th>
+                @Html.DisplayName("ProfitPerItem")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.TicketsSold)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.MovieName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SalePrice)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.StudioCutPercentage)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Quantity)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProfitPerItem)
+    </td>
+</tr>
+}
+    </tbody>
+</table>

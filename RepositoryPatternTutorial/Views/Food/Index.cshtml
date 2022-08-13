@@ -1,0 +1,38 @@
+﻿@model RepositoryPatternTutorial.ViewModels.FoodWithStatsViewModel
+@{ ViewData["Title"] = "Index"; }
+
+<ul>
+    <li class="d-inline-block">
+        <strong>@Html.DisplayNameFor(x => x.Stats.AverageFoodItemProfit)</strong>
+        @Html.DisplayFor(x => x.Stats.AverageFoodItemProfit)
+    </li>
+    <li class="d-inline-block">
+        <strong>@Html.DisplayNameFor(x => x.Stats.AverageTicketProfit)</strong>
+        @Html.DisplayFor(x => x.Stats.AverageTicketProfit)
+    </li>
+</ul>
+
+<h1>Food Items Sold</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayName("Name")</th>
+            <th>@Html.DisplayName("SalePrice")</th>
+            <th>@Html.DisplayName("UnitPrice")</th>
+            <th>Profit Per Item</th>
+            <th>@Html.DisplayName("Quantity")</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.FoodItemsSold)
+        {
+<tr>
+    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+    <td>@Html.DisplayFor(modelItem => item.SalePrice)</td>
+    <td>@Html.DisplayFor(modelItem => item.UnitPrice)</td>
+    <td>$@(item.SalePrice - item.UnitPrice)</td>
+    <td>@Html.DisplayFor(modelItem => item.Quantity)</td>
+</tr>}
+    </tbody>
+</table>
